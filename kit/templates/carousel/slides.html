@@ -1,0 +1,24 @@
+<!-- Reusable carousel. Copy this folder, put the images next to it, edit window.SLIDES only. Render with kit/tools/slides.js. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../assets/fonts.css"><style>
+body{margin:0;background:#000}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;background:#0B0B0C;color:#F5F5F2;font-family:Inter,sans-serif;box-sizing:border-box;padding:84px 80px}
+.glow{position:absolute;inset:0;background:radial-gradient(circle at 85% 0%,rgba(212,255,0,.16),transparent 55%)}
+.brand{font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-size:40px;position:relative}
+.brand span,.acc{color:#D4FF00}
+.k{font-size:28px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#9A9A96;position:relative}
+.h{font-family:'Barlow Condensed';font-style:italic;font-weight:800;text-transform:uppercase;line-height:.92;font-size:112px;margin:18px 0 0;position:relative}
+.p{font-size:34px;line-height:1.38;color:#C9C9C5;margin:26px 0 0;max-width:470px;position:relative}
+.p.wide{max-width:none}
+.tag{display:inline-block;margin-top:26px;background:#D4FF00;color:#0B0B0C;border-radius:999px;padding:12px 28px;font-size:28px;font-weight:800;position:relative}
+.shot{position:absolute;left:80px;width:920px;overflow:hidden;border-radius:32px;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 3px #2A2A2E}
+.shot img{display:block}
+.n{position:absolute;bottom:56px;left:80px;font-size:26px;color:#6B6B68;font-weight:600;letter-spacing:3px}
+.note{position:absolute;bottom:56px;right:80px;font-size:24px;color:#6B6B68;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.swipe{position:absolute;bottom:56px;right:80px;font-size:30px;font-weight:700;color:#D4FF00}
+.list{margin:56px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:48px;position:relative}
+.list li{display:flex;gap:26px;align-items:flex-start;font-size:48px;line-height:1.2;font-weight:700}
+.list li b{color:#D4FF00;font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-size:48px;min-width:62px}
+.list li span small{display:block;font-size:34px;font-weight:400;color:#9A9A96;margin-top:8px;line-height:1.35}
+</style></head><body><div id="host"></div>
+<script>window.SLIDES = [{ type: 'cover', k: 'Example', h: 'Cover<br><span class="acc">title.</span>' }, { type: 'cta', h: 'The end.' }];</script>
+<script src="slides.js"></script></body></html>

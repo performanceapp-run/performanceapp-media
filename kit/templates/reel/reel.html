@@ -1,0 +1,37 @@
+<!-- Reusable Reel (1080×1920). Copy this folder, put the app card images next to it, and edit window.CFG only.
+     Scenes: hook → one scene per item in "shots" → optional "say" → end frame. Render with kit/tools/reel.js.
+     CFG.shots[i]: { cap, cap2?, swap? (s), img, hl? [x,y,w,h] in img pixels (from grab.js .json), hlAt? (s), grow? (highlight
+     grows downward), hlText? (small label by the highlight), dur? (s, default 5.5) }. Images wider than 940 px are scaled to 940;
+     taller ones scroll so the highlight comes into view. Text: use <span class="acc">…</span> for lime words, <br> for lines. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../assets/fonts.css"><style>
+body{margin:0;background:#0B0B0C}
+#s{width:1080px;height:1920px;position:relative;overflow:hidden;background:#0B0B0C;font-family:Inter;color:#F5F5F2}
+.glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,255,0,.18),transparent 55%)}
+.acc{color:#D4FF00}
+.big{position:absolute;left:60px;right:60px;text-align:center;font-family:'Barlow Condensed';font-style:italic;font-weight:800;text-transform:uppercase;line-height:.92}
+.cap{position:absolute;top:120px;left:60px;right:60px;text-align:center;font-family:'Barlow Condensed';font-style:italic;font-weight:800;text-transform:uppercase;font-size:108px;line-height:.92}
+.sub{position:absolute;left:90px;right:90px;text-align:center;font-size:44px;color:#C9C9C5;line-height:1.35}
+.frame{position:absolute;left:70px;width:940px;top:480px;height:1330px;border-radius:44px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.8),0 0 0 3px #2A2A2E}
+.wrap{position:absolute;left:0;top:0;transform-origin:0 0}
+.wrap img{display:block}
+.hl{position:absolute;border:7px solid #D4FF00;border-radius:22px;box-shadow:0 0 50px rgba(212,255,0,.5);background:rgba(212,255,0,.08)}
+.hlt{position:absolute;background:#D4FF00;color:#0B0B0C;font-weight:900;font-size:30px;padding:8px 18px;border-radius:999px;white-space:nowrap;transform:translateY(-120%)}
+.note{position:absolute;left:0;right:0;top:1846px;text-align:center;font-size:28px;color:#6B6B68;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.pill{position:absolute;left:50%;transform:translateX(-50%);background:#D4FF00;color:#0B0B0C;border-radius:999px;padding:30px 60px;font-size:50px;font-weight:800;white-space:nowrap}
+.brand{position:absolute;left:0;right:0;text-align:center;font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-size:84px}
+.brand span{color:#D4FF00}
+.scene{position:absolute;inset:0;display:none}
+.tag{position:absolute;left:50%;transform:translateX(-50%);top:1630px;border:3px solid #D4FF00;color:#D4FF00;border-radius:999px;padding:14px 34px;font-size:36px;font-weight:800;white-space:nowrap}
+</style></head><body><div id="s"><div class="glow"></div><div id="scenes"></div>
+<div id="fade" style="position:absolute;inset:0;background:#0B0B0C;opacity:0;pointer-events:none"></div></div>
+<script>
+window.CFG = {
+  hook: { top: 'Same pace<br>every km.', bottom: 'So why did it<br>feel harder?', dur: 3 },
+  shots: [{ cap: 'Pace: 6:30<br><span class="acc">every km.</span>', cap2: 'Heart rate:<br><span class="acc">145 → 161.</span>', swap: 2.6, img: 'card.png', hl: null, dur: 6 }],
+  say: { cap: 'The app tells you<br><span class="acc">what it means.</span>', img: null, sub: 'A little drift is normal on long runs.', dur: 5 },
+  end: { sub: 'Every run explained, in plain words.', tag: null, dur: 3.5 },
+  note: 'Sample run'
+};
+</script>
+<script src="reel.js"></script>
+</body></html>
