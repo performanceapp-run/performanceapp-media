@@ -1,0 +1,62 @@
+<html><head><link rel="stylesheet" href="../../assets/fonts.css"><style>
+body{margin:0;background:#0B0B0C}
+#s{width:1080px;height:1920px;position:relative;overflow:hidden;background:#0B0B0C;font-family:Inter;color:#F5F5F2}
+.glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,255,0,.18),transparent 55%)}
+.brand{position:absolute;left:0;right:0;text-align:center;font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-size:64px;letter-spacing:1px}
+.brand span,.acc{color:#D4FF00}
+.big{position:absolute;left:0;right:0;text-align:center;font-family:'Barlow Condensed';font-style:italic;font-weight:800;text-transform:uppercase;line-height:.92}
+.cap{position:absolute;top:130px;left:60px;right:60px;text-align:center;font-family:'Barlow Condensed';font-style:italic;font-weight:800;text-transform:uppercase;font-size:110px;line-height:.92}
+.sub{position:absolute;left:90px;right:90px;text-align:center;font-size:42px;color:#C9C9C5;line-height:1.35}
+.ph{position:absolute;left:110px;width:860px;top:470px;height:1380px;border-radius:64px;border:12px solid #2A2A2E;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.8);background:#151517}
+.wrap{position:absolute;left:0;top:0;width:1080px;transform-origin:0 0}
+.wrap img{display:block;width:1080px}
+.hl{position:absolute;left:428px;width:112px;top:180px;border:6px solid #D4FF00;border-radius:22px;box-shadow:0 0 40px rgba(212,255,0,.45);background:rgba(212,255,0,.10)}
+.note{position:absolute;left:0;right:0;top:1880px;text-align:center;font-size:30px;color:#6B6B68;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.pill{position:absolute;left:50%;transform:translateX(-50%);background:#D4FF00;color:#0B0B0C;border-radius:999px;padding:30px 60px;font-size:50px;font-weight:800;white-space:nowrap}
+.scene{position:absolute;inset:0;display:none}
+</style></head><body><div id="s"><div class="glow"></div>
+<div class="scene" id="a">
+ <div class="big" style="top:520px;font-size:190px" id="a1">Same pace<br>every km.</div>
+ <div class="big acc" style="top:1000px;font-size:150px" id="a2">So why did it<br>feel harder?</div></div>
+<div class="scene" id="b">
+ <div class="cap" id="b0">Pace: 6:30<br><span class="acc">every km.</span></div>
+ <div class="cap" id="b3" style="opacity:0">Heart rate:<br><span class="acc">145 → 161.</span></div>
+ <div class="ph" id="b1"><div class="wrap" id="b2"><img src="splits.png"><div class="hl" id="hl"></div></div></div>
+ <div class="note" id="b4">Sample run</div></div>
+<div class="scene" id="c">
+ <div class="cap" id="c0">The app tells you<br><span class="acc">what it means.</span></div>
+ <img id="c1" src="hrcard.png" style="position:absolute;width:960px;left:60px;top:470px;border-radius:40px">
+ <div class="sub" style="top:1380px" id="c2">A little drift is normal on long runs.<br>A lot can mean heat, too little water<br>or tired legs.</div>
+ <div class="note" id="c3">Sample run</div></div>
+<div class="scene" id="d"><div class="brand" style="top:520px;font-size:84px" id="d0">PERFORMANCEAPP<span>.RUN</span></div>
+ <div class="big" style="top:720px;font-size:150px" id="d1">Know your run.<br><span class="acc">Know yourself.</span></div>
+ <div class="sub" style="top:1060px" id="d2">Every run explained, in plain words.</div>
+ <div class="pill" style="top:1260px" id="d3">Free to start · Link in bio</div></div>
+<div id="fade" style="position:absolute;inset:0;background:#0B0B0C;opacity:0"></div>
+</div>
+<script>
+const $=(i)=>document.getElementById(i);
+const cl=(x)=>Math.max(0,Math.min(1,x)), ease=(x)=>1-Math.pow(1-cl(x),3), io=(k)=>k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+const up=(el,t,t0,d=0.5,dist=80)=>{const k=ease((t-t0)/d);el.style.opacity=k;el.style.transform=(el.dataset.base||'')+`translateY(${(1-k)*dist}px)`;};
+const SC=860/1080, ROW0=190, ROWH=102;
+const S={
+ a:[3.0,(t)=>{up($('a1'),t,0.1,0.6,120);up($('a2'),t,1.1,0.6,120);}],
+ b:[6.5,(t)=>{
+   up($('b1'),t,0.1,0.6,200);
+   const c1=cl((t-2.6)/0.4); $('b0').style.opacity=t<0.5?ease(t/0.5):1-c1; $('b0').style.transform=`translateY(${-c1*40}px)`;
+   $('b3').style.opacity=c1; $('b3').style.transform=`translateY(${(1-c1)*40}px)`;
+   // highlight the HR column, growing down the rows while the table scrolls
+   const g=io(cl((t-1.4)/3.6)); const rows=1+g*18;
+   $('hl').style.height=(rows*ROWH+40)+'px'; $('hl').style.opacity=cl((t-1.2)/0.3);
+   const scroll=io(cl((t-2.0)/3.2))*330;
+   $('b2').style.transform=`translateY(${-scroll}px) scale(${SC})`;
+   $('b4').style.opacity=cl((t-0.4)/0.4);
+ }],
+ c:[5.0,(t)=>{up($('c0'),t,0.05);up($('c1'),t,0.2,0.6,160);up($('c2'),t,1.4,0.6);$('c3').style.opacity=cl((t-0.4)/0.4);}],
+ d:[3.5,(t)=>{up($('d0'),t,0.05);up($('d1'),t,0.3);up($('d2'),t,0.7);up($('d3'),t,1.0);$('d3').style.transform='translateX(-50%) '+$('d3').style.transform;}]
+};
+window.render=(id,t)=>{for(const k in S)$(k).style.display=k===id?'block':'none';S[id][1](t);const d=S[id][0];const fo=cl((t-(d-0.25))/0.25), fi=id==='a'?0:cl(1-t/0.2);$('fade').style.opacity=Math.max(fo*(id==='d'?0:1),fi);};
+window.dur=(id)=>S[id][0];
+// Scene order and the frame used as the cover (scene@seconds). Read by kit/tools/reel.js.
+window.SCENES=['a','b','c','d']; window.COVER='b@4';
+</script></body></html>
