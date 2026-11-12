@@ -59,7 +59,10 @@ Run every evening (Asia/Karachi). The owner approves every post; you only ever c
 - **Honest claims.** "Free to start", never just "free". "Android", not "your phone" (no iPhone app yet). Lead with "every run explained";
   race predictions are one feature, not the headline. Training plan: free runners get 2 weeks of plan once; the full plan is Pro. Pro is Rs 699/month.
 - **No AI claims.** The app's analysis is fixed coaching rules, not AI. Don't say "AI coach".
-- **Garmin.** Don't name Garmin or show its logo in posts; say "your watch".
+- **Garmin** (Garmin's API brand guidelines). Posts use sample runs, so never show the Garmin logo or a "Garmin [device]"
+  credit, and never present sample runs as Garmin data. Prefer "your watch". To say the app works with Garmin, name the app
+  in full, "the Garmin Connect™ app" (never "Garmin" alone or shortened), with the Garmin Connect™ app tile beside it, unaltered
+  (the tile is `public/img/garmin-connect.png` in AhmedFrz/performance_app). Don't add Garmin's guideline files here: they are confidential.
 - **Sample data.** Screenshots use sample runs: label them "Sample run" on screen and in the caption. Never present them as a real runner's result.
 - **Real people.** A runner's data, face or name only with their permission in writing (a DM is enough). The owner gets it, not you.
 - **Race organisers.** A race's name or logo only with the organiser's OK; never suggest the app is the official race app or race timing.
